@@ -1,0 +1,13 @@
+config:
+  target: "http://test-api-alpha-1545930193.us-west-2.elb.amazonaws.com"
+  phases:
+    - duration: 500
+      arrivalRate: 100
+      maxVusers: 100
+scenarios:
+  - flow:
+      - get:
+          url: "/"
+  - flow:
+      - get:
+          url: "/500-error"
