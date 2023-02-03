@@ -1,0 +1,26 @@
+name: Lint & Format
+
+on: pull_request
+
+jobs:
+  install:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Cache modules
+        id: cache-modules
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm i
+      - name: TEST
+        run: ${{github.event.inputs.foo}}
