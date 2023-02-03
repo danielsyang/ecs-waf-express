@@ -7,6 +7,11 @@ app.get("/", (_, res) => {
   res.sendStatus(200);
 });
 
+app.get("/ok", (_, res) => {
+  console.log("GET /");
+  res.sendStatus(200);
+});
+
 app.get("/.well-known/apollo/server-health", (_, res) => {
   res.sendStatus(200);
 });
