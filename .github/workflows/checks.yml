@@ -23,4 +23,4 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm i
       - name: TEST
-        run: ${{github.event.inputs.foo}}
+        run: echo ${{github.event.pull_request.body}}
